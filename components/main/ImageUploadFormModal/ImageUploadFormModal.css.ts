@@ -31,7 +31,7 @@ export const TagList = style({
   display: "flex",
   flexWrap: "wrap",
   alignItems: "center",
-  marginTop: "40px",
+  marginTop: "20px",
 });
 
 export const Tag = style({

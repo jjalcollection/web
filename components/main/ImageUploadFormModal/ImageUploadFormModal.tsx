@@ -13,6 +13,7 @@ import {
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
+import { Tooltip } from "react-tooltip";
 
 interface Props {
   isOpen: boolean;
@@ -57,6 +58,11 @@ export const ImageUploadFormModal = ({ isOpen, onToggleModal }: Props) => {
     setInputValue(e.target.value);
   };
 
+  const onSubmitJjal = () => {
+    onToggleModal();
+    toast("짤이 등록되었습니다.");
+  };
+
   useEffect(() => {
     if (!isOpen) {
       setTags([]);
@@ -90,7 +96,7 @@ export const ImageUploadFormModal = ({ isOpen, onToggleModal }: Props) => {
             ))}
           </>
           {tags.length < 3 && (
-            <form onSubmit={onSubmitTag}>
+            <form onSubmit={onSubmitTag} className="my-anchor-element">
               <input
                 className={TagInput}
                 placeholder="태그를 입력하세요"
@@ -102,8 +108,24 @@ export const ImageUploadFormModal = ({ isOpen, onToggleModal }: Props) => {
           )}
         </div>
 
+        <Tooltip
+          anchorSelect=".my-anchor-element"
+          place="bottom"
+          delayHide={1000}
+        >
+          <span
+            style={{
+              fontSize: "12px",
+            }}
+          >
+            태그를 입력 후 엔터를 눌러주세요.
+          </span>
+        </Tooltip>
+
         <div className={ButtonBox}>
-          <button className={SubmitButton}>등록</button>
+          <button className={SubmitButton} onClick={onSubmitJjal}>
+            등록
+          </button>
         </div>
       </div>
     </Modal>
