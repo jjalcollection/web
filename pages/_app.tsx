@@ -7,6 +7,8 @@ import {
 import type { AppProps } from "next/app";
 import { useState } from "react";
 import "@/styles/global.css";
+import "reset.css.ts/meyer.css";
+import { Header } from "@/layouts";
 
 export default function App({ Component, pageProps }: AppProps) {
   const [queryClient] = useState(
@@ -27,6 +29,7 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <QueryClientProvider client={queryClient}>
       <Hydrate state={pageProps.dehydratedState}>
+        <Header />
         <Component {...pageProps} />
       </Hydrate>
       <ReactQueryDevtools initialIsOpen={false} />
