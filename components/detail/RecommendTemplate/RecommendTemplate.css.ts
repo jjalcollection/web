@@ -1,3 +1,4 @@
+import { theme } from "@/styles/theme.css";
 import { media } from "@/styles/ui.css";
 import { style } from "@vanilla-extract/css";
 
@@ -21,4 +22,10 @@ export const Container = style({
       padding: "32px 20px",
     },
   },
+});
+
+export const MoreText = style({
+  fontSize: "16px",
+  fontWeight: "700",
+  color: theme.palette.primaryDark,
 });
