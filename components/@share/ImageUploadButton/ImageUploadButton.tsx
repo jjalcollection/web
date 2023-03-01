@@ -1,5 +1,11 @@
 import { Container } from "./ImageUploadButton.css";
 
-export const ImageUploadButton = () => {
-  return <button className={Container}>짤 업로드</button>;
+interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {}
+
+export const ImageUploadButton = ({ ...rest }: Props) => {
+  return (
+    <button className={Container} {...rest}>
+      짤 업로드
+    </button>
+  );
 };
