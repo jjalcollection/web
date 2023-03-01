@@ -20,3 +20,9 @@ export const ImageStyle = style({
   maxWidth: "1024px",
   margin: "0 auto",
 });
+
+export const DownloadButtonBox = style({
+  width: "100%",
+  display: "flex",
+  justifyContent: "flex-end",
+});

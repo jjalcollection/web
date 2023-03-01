@@ -1,8 +1,14 @@
 /* eslint-disable @next/next/no-img-element */
 import Image from "next/image";
 import React from "react";
-import { Container, ImageWrapper, ImageStyle } from "./DetailContents.css";
+import {
+  Container,
+  ImageWrapper,
+  ImageStyle,
+  DownloadButtonBox,
+} from "./DetailContents.css";
 import { saveAs } from "file-saver";
+import { ImageDownloadButton } from "@/components/@share/ImageDownloadButton";
 
 export const DetailContents = () => {
   const downloadImage = () => {
@@ -14,7 +20,9 @@ export const DetailContents = () => {
 
   return (
     <div className={Container}>
-      <button onClick={downloadImage}>다운</button>
+      <div className={DownloadButtonBox}>
+        <ImageDownloadButton onClick={downloadImage}>짤 저장하기</ImageDownloadButton>
+      </div>
       <div className={ImageWrapper}>
         <img
           className={ImageStyle}
