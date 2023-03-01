@@ -9,6 +9,9 @@ import { useState } from "react";
 import "@/styles/global.css";
 import "reset.css.ts/meyer.css";
 import { Header } from "@/layouts";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import "react-tooltip/dist/react-tooltip.css";
 
 export default function App({ Component, pageProps }: AppProps) {
   const [queryClient] = useState(
@@ -32,6 +35,7 @@ export default function App({ Component, pageProps }: AppProps) {
         <Header />
         <Component {...pageProps} />
       </Hydrate>
+      <ToastContainer position="bottom-center" />
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
   );
