@@ -5,6 +5,7 @@ export const Container = style({
   height: "180px",
   backgroundColor: "#d6d2d2",
   borderRadius: "20px",
+  cursor: "pointer",
 });
 
 export const ItemImage = style({

@@ -10,7 +10,6 @@ import {
   TagList,
   Title,
 } from "./ImageUploadFormModal.css";
-import Image from "next/image";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { Tooltip } from "react-tooltip";
