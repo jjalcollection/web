@@ -3,6 +3,8 @@ import { style } from "@vanilla-extract/css";
 
 export const Container = style({
   width: "100%",
+  maxWidth: "1024px",
+  margin: "0 auto",
   padding: "64px 120px",
   display: "flex",
   flexDirection: "column",

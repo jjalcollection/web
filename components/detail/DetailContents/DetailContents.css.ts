@@ -13,3 +13,10 @@ export const ImageWrapper = style({
   textAlign: "center",
   paddingBottom: "24px",
 });
+
+export const ImageStyle = style({
+  width: "100%",
+  height: "auto",
+  maxWidth: "1024px",
+  margin: "0 auto",
+});
