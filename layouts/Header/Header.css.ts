@@ -8,6 +8,7 @@ export const Container = style({
 export const Text = style({
   fontSize: "24px",
   fontWeight: "bold",
+  cursor: "pointer",
 });
 
 export const Inner = style({
