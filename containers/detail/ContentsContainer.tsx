@@ -3,9 +3,9 @@ import React from "react";
 
 function ContentsContainer() {
   return (
-    <div>
+    <>
       <DetailTemplate />
-    </div>
+    </>
   );
 }
 
