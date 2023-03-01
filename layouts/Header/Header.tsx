@@ -1,9 +1,13 @@
-import { Container, Inner } from "./Header.css";
+import { ImageUploadButton } from "@/components/@share";
+import { Container, Inner, Text } from "./Header.css";
 
 export const Header = () => {
   return (
     <header className={Container}>
-      <div className={Inner}>헤더</div>
+      <div className={Inner}>
+        <h1 className={Text}>JJAL</h1>
+        <ImageUploadButton />
+      </div>
     </header>
   );
 };
