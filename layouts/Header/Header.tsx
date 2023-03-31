@@ -1,5 +1,6 @@
 import { ImageUploadButton } from "@/components/@share";
 import { ImageUploadFormModal } from "@/components/main/ImageUploadFormModal";
+import { Button } from "@mantine/core";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import { Container, Inner, Text } from "./Header.css";
@@ -16,7 +17,7 @@ export const Header = () => {
           <h1 onClick={() => router.push("/")} className={Text}>
             JJAL
           </h1>
-          <ImageUploadButton onClick={onToggleModal} />
+          <Button onClick={onToggleModal}>짤 업로드</Button>
         </div>
       </header>
 
