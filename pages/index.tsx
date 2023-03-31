@@ -1,9 +1,16 @@
 import { MainTemplate } from "@/components/main";
+import { BaseLayout } from "@/layouts/BaseLayout";
 
-export default function Home() {
+const Home: NextPageWithLayout = () => {
   return (
     <>
       <MainTemplate />
     </>
   );
-}
+};
+
+Home.getLayout = (page) => {
+  return <BaseLayout>{page}</BaseLayout>;
+};
+
+export default Home;

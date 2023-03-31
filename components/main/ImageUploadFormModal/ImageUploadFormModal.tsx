@@ -1,25 +1,29 @@
-import { Modal } from "@/components/@share/Modal";
 import {
   ButtonBox,
-  Container,
   FileImage,
   ImageBox,
   SubmitButton,
   Tag,
   TagInput,
   TagList,
-  Title,
 } from "./ImageUploadFormModal.css";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { Tooltip } from "react-tooltip";
+import { Modal } from "@mantine/core";
+import { baseApi } from "@/apis";
 
 interface Props {
   isOpen: boolean;
+  close: () => void;
   onToggleModal: () => void;
 }
 
-export const ImageUploadFormModal = ({ isOpen, onToggleModal }: Props) => {
+export const ImageUploadFormModal = ({
+  isOpen,
+  close,
+  onToggleModal,
+}: Props) => {
   const [tags, setTags] = useState<string[]>([]);
   const [inputValue, setInputValue] = useState("");
 
@@ -31,10 +35,14 @@ export const ImageUploadFormModal = ({ isOpen, onToggleModal }: Props) => {
       }
 
       const fd = new FormData();
-      fd.append("image", e.target.files[0]);
+      fd.append("images", e.target.files[0]);
+
       try {
-        // const data = await uploadProfileImageAPI(fd);
-        // onChangeProfileImage(data.imageUrl, e.target.files[0].name);
+        const data = await baseApi.post("/api/v1/image", fd, {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        });
       } catch (err) {
         console.log(err);
         alert("이미지 업로드에 실패했습니다.");
@@ -69,18 +77,9 @@ export const ImageUploadFormModal = ({ isOpen, onToggleModal }: Props) => {
     }
   }, [isOpen]);
 
-  if (!isOpen) {
-    return null;
-  }
   return (
-    <Modal
-      width={500}
-      height={550}
-      isModal={isOpen}
-      onToggleModal={onToggleModal}
-    >
-      <div className={Container}>
-        <span className={Title}>짤 업로드</span>
+    <Modal opened={isOpen} onClose={close} title="짤 업로드">
+      <div>
         <label className={ImageBox}>
           +
           <input className={FileImage} type="file" onChange={onImageUpload} />

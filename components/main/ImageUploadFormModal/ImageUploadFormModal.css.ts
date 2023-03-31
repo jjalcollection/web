@@ -1,11 +1,6 @@
 import { theme } from "@/styles/theme.css";
 import { style } from "@vanilla-extract/css";
 
-export const Container = style({
-  padding: "40px 60px",
-  height: "100%",
-});
-
 export const ImageBox = style({
   width: "380px",
   height: "300px",
@@ -17,10 +12,6 @@ export const ImageBox = style({
   cursor: "pointer",
   color: "#ccc",
   fontSize: "60px",
-});
-
-export const Title = style({
-  fontSize: "20px",
 });
 
 export const FileImage = style({
