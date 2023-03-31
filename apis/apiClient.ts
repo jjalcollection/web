@@ -1,53 +1,44 @@
-import axios, { AxiosRequestConfig } from "axios";
+import axios, { AxiosInstance, AxiosRequestConfig } from "axios";
 
-// TODO 서버 주소 나오면 세팅
-const SERVER_URL = "";
+interface HttpProps {
+  baseUrl: string;
+  withCredentials?: boolean;
+}
+class Http {
+  private axios: AxiosInstance;
 
-const apiClient = axios.create({
-  withCredentials: true,
-  timeout: 50000,
+  constructor({ baseUrl, withCredentials = false }: HttpProps) {
+    this.axios = axios.create({
+      baseURL: baseUrl,
+      withCredentials,
+    });
+  }
+
+  intercept() {
+    return this.axios.interceptors;
+  }
+
+  get<T>(url: string, config?: AxiosRequestConfig<T>) {
+    return this.axios.get(url, config);
+  }
+
+  post<T>(url: string, data?: unknown, config?: AxiosRequestConfig<T>) {
+    return this.axios.post(url, data, config);
+  }
+
+  put<T>(url: string, data?: unknown, config?: AxiosRequestConfig<T>) {
+    return this.axios.put(url, data, config);
+  }
+
+  patch<T>(url: string, data?: unknown, config?: AxiosRequestConfig<T>) {
+    return this.axios.patch(url, data, config);
+  }
+
+  delete<T>(url: string, config?: AxiosRequestConfig<T>) {
+    return this.axios.delete(url, config);
+  }
+}
+
+export const baseApi = new Http({
+  baseUrl: "https://jjal.xyz",
 });
-
-apiClient.defaults.baseURL = `${SERVER_URL}`;
-
-export function get<T>(url: string, config?: AxiosRequestConfig<T>) {
-  return apiClient.get(url, config);
-}
-
-export function post<T>(
-  url: string,
-  data?: unknown,
-  config?: AxiosRequestConfig<T>
-) {
-  return apiClient.post(url, data, config);
-}
-
-export function put<T>(
-  url: string,
-  data?: unknown,
-  config?: AxiosRequestConfig<T>
-) {
-  return apiClient.put(url, data, config);
-}
-
-export function patch<T>(
-  url: string,
-  data?: unknown,
-  config?: AxiosRequestConfig<T>
-) {
-  return apiClient.patch(url, data, config);
-}
-
-export function del<T>(url: string, config?: AxiosRequestConfig<T>) {
-  return apiClient.delete(url, config);
-}
-
-const client = {
-  get,
-  post,
-  patch,
-  put,
-  del,
-};
-
-export default client;
