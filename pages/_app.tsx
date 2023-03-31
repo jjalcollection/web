@@ -12,8 +12,14 @@ import { Header } from "@/layouts";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "react-tooltip/dist/react-tooltip.css";
+import { MantineProvider } from "@mantine/core";
 
-export default function App({ Component, pageProps }: AppProps) {
+interface AppPropsWithLayout extends AppProps {
+  Component: NextPageWithLayout;
+  pageProps: { dehydratedState: unknown };
+}
+
+export default function App({ Component, pageProps }: AppPropsWithLayout) {
   const [queryClient] = useState(
     () =>
       new QueryClient({
@@ -29,12 +35,15 @@ export default function App({ Component, pageProps }: AppProps) {
       })
   );
 
+  const getLayout = Component.getLayout || ((page) => page);
+
   return (
     <QueryClientProvider client={queryClient}>
-      <Hydrate state={pageProps.dehydratedState}>
-        <Header />
-        <Component {...pageProps} />
-      </Hydrate>
+      <MantineProvider withGlobalStyles withNormalizeCSS>
+        <Hydrate state={pageProps.dehydratedState}>
+          {getLayout(<Component {...pageProps} />)}
+        </Hydrate>
+      </MantineProvider>
       <ToastContainer position="bottom-center" />
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>

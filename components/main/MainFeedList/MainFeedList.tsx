@@ -15,7 +15,10 @@ export const MainFeedList = () => {
     <div className={Container}>
       <div className={Inner}>
         {tempArr.map((item, index) => (
-          <MainFeedItem key={item} onClick={() => router.push(`/${index}`)} />
+          <MainFeedItem
+            key={item}
+            onClick={() => router.push(`/detail/${index}`)}
+          />
         ))}
       </div>
     </div>

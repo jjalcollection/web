@@ -6,9 +6,20 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "gen": "svgr --index-template icons/templates/indexTemplate.cjs  --config-file icons/config/basic.config.cjs",
+    "gen:icon": "yarn gen --out-dir ./icons/components ./icons/svgs",
+    "icon:build": "yarn gen:icon"
   },
   "dependencies": {
+    "@emotion/react": "^11.10.6",
+    "@emotion/server": "^11.10.0",
+    "@mantine/core": "^6.0.5",
+    "@mantine/hooks": "^6.0.5",
+    "@mantine/next": "^6.0.5",
+    "@svgr/plugin-jsx": "^6.3.1",
+    "@svgr/plugin-prettier": "^6.3.1",
+    "@tabler/icons-react": "^2.12.0",
     "@tanstack/react-query": "^4.24.10",
     "@tanstack/react-query-devtools": "^4.24.12",
     "@types/node": "18.14.2",
@@ -28,6 +39,8 @@
     "typescript": "4.9.5"
   },
   "devDependencies": {
+    "@svgr/cli": "^7.0.0",
+    "@svgr/core": "^7.0.0",
     "@types/file-saver": "^2.0.5",
     "@vanilla-extract/next-plugin": "^2.1.1"
   }
