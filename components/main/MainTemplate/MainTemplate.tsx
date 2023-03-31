@@ -1,3 +1,4 @@
+import { Button } from "@mantine/core";
 import { MainBanner } from "../MainBanner";
 import { MainFeedList } from "../MainFeedList";
 import { Container } from "./MainTemplate.css";

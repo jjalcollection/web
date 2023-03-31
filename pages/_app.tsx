@@ -12,6 +12,7 @@ import { Header } from "@/layouts";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "react-tooltip/dist/react-tooltip.css";
+import { MantineProvider } from "@mantine/core";
 
 export default function App({ Component, pageProps }: AppProps) {
   const [queryClient] = useState(
@@ -31,10 +32,12 @@ export default function App({ Component, pageProps }: AppProps) {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <Hydrate state={pageProps.dehydratedState}>
-        <Header />
-        <Component {...pageProps} />
-      </Hydrate>
+      <MantineProvider withGlobalStyles withNormalizeCSS>
+        <Hydrate state={pageProps.dehydratedState}>
+          <Header />
+          <Component {...pageProps} />
+        </Hydrate>
+      </MantineProvider>
       <ToastContainer position="bottom-center" />
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
