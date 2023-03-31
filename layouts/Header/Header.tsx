@@ -1,5 +1,6 @@
 import { ImageUploadButton } from "@/components/@share";
 import { ImageUploadFormModal } from "@/components/main/ImageUploadFormModal";
+import { PersonIcon } from "@/icons";
 import { Button, Group } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { useRouter } from "next/router";
@@ -22,6 +23,7 @@ export const Header = () => {
               로그인
             </Button>
           </Group>
+          <PersonIcon fontSize={30} />
         </div>
       </header>
 
